@@ -8,7 +8,7 @@ import java.util.List;
 public class UserRepository {
     private List<User> userList;
 
-    public UserRepository(List<User> userList) {
+    public UserRepository() {
         this.userList = new ArrayList<>();
         addData();
     }
