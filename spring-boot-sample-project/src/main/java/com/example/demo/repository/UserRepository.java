@@ -23,11 +23,12 @@ public class UserRepository {
 
     private void addData(){
         for(int i=0; i<10; i++){
-            String firstName = "user" + i;
-            String lastName = "last";
-            String email = "a"+i+"@abc.com";
-            String password = "abc";
-            User user = new User(firstName, lastName, email, password);
+            User user = new User();
+            user.setFirstName("user" + i)  ;
+            user.setLastName("Last");
+            user.setEmail("a"+i+"@abc.com");
+            user.setPassword("abc");
+
             this.userList.add(user);
         }
     }

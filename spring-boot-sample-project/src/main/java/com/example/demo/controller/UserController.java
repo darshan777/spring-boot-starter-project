@@ -23,9 +23,9 @@ public class UserController {
         return ResponseEntity.ok(userList);
     }
 
-    @GetMapping("/user/{name}")
-    public ResponseEntity<User> getUser(@PathVariable(value="name") String userName){
-        User user = userService.getAUser(userName);
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Optional<User>> getUser(@PathVariable(value="id") int id){
+        Optional<User> user = userService.getAUser(id);
         return ResponseEntity.ok(user);
     }
 
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PutMapping("/user/{userName}")
-    public ResponseEntity<String> updateUser(@Valid @RequestBody User user, @PathVariable(value="userName") String firstName){
+    public ResponseEntity<String> updateUser(@Valid @RequestBody User user, @PathVariable(value="userName") int firstName){
         userService.updateUser(firstName, user);
         return ResponseEntity.ok("User Updated");
     }

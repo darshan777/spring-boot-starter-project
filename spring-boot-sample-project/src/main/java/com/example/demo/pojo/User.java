@@ -1,21 +1,32 @@
 package com.example.demo.pojo;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="users")
 public class User {
-    private static int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  int id;
+    @NotNull
+    @Column
     private String firstName;
+    @Column
+    @NotNull
     private String lastName;
+    @Column
+    @NotNull
     private String email;
+    @Column
+    @NotNull
     private String password;
 
-    public User(String firstName, String lastName, String email, String password ){
-        this.id = this.id++;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
+    public User( ){
+
     }
 
-    public static int getId() {
+    public  int getId() {
         return id;
     }
 
