@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,11 +31,11 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<String> createUser(@Valid @RequestBody User user){
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user){
         if(userService.createUser(user)){
             return ResponseEntity.ok("User Created");
         }
-        return ResponseEntity.ok("Cannot create a user");
+        return new ResponseEntity<>("user Created", HttpStatus.CREATED);
     }
 
     @PutMapping("/user/{userName}")
